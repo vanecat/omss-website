@@ -1,0 +1,11 @@
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.ico
+
+*.svg
+*.pdf
+fonts/
+
+.idea/
