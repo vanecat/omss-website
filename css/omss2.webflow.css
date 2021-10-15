@@ -849,7 +849,7 @@ h2 {
 }
 
 .slider {
-  height: 100%;
+  height: 70vh;
   background-color: #f1f1f1;
 }
 
@@ -1077,6 +1077,9 @@ h2 {
 }
 
 @media screen and (max-width: 991px) {
+  .slider {
+    height: 50vh;
+  }
   .icon-button-text {
     font-size: 1rem;
   }

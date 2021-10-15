@@ -15,6 +15,10 @@
     right: 5px;
     width: 25px;
     z-index: 1100;
+    cursor: pointer;
+}
+.omss-slider .omss-slider-full-screen-ctrls:hover {
+    background-color: darkblue;
 }
 .omss-slider .omss-slider-full-screen-ctrls img {
     width: 100%;
