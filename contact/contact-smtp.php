@@ -68,4 +68,3 @@ function send_mail_to_internal( $to, $subject, $body ) {
         return true;
     }
 }
-mail('someone@someone.com', 'OMSS Contact Form', 'This is a test');
