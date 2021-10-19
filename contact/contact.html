@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+  <script src="/js/contact-form.js"></script>
+</head>
+<body>
+<form method="post" action="contact.php" data-form="form">
+
+  <div data-form="errors" style="display: none;"></div>
+  <div data-form="success" style="display: none;">
+    Thank you for contacting us.
+    We will be in touch soon!</div>
+
+
+    <input name="name" placeholder="name" data-form="field"/>
+    <input name="email" type="email" placeholder="email" data-form="field"/>
+    <input name="phone" placeholder="phone" data-form="field"/>
+    <input name="subject" placeholder="subject" data-form="field"/>
+    <textarea name="message" placeholder="message" data-form="field"></textarea>
+
+    <input type="submit" data-form="submit"/>
+
+</form>
+
+<script>
+  OMSSContactForm();
+</script>
+</body>
+</html>
