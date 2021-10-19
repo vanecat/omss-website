@@ -6,6 +6,11 @@ body {
   line-height: 1;
   font-weight: 400;
   text-transform: none;
+  overflow-x: hidden;
+}
+
+body.no-scroll {
+  overflow: hidden !important;
 }
 
 h2 {
@@ -905,7 +910,7 @@ h2 {
   top: 0%;
   right: auto;
   bottom: auto;
-  z-index: 100;
+  z-index: 9500;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -921,6 +926,9 @@ h2 {
   -ms-flex-align: center;
   align-items: center;
   background-color: hsla(0, 0%, 94.7%, 0.96);
+
+  overflow-x: none;
+  overflow-y: scroll;
 }
 
 .overlay.hidden {

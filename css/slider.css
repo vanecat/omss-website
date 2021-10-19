@@ -12,7 +12,7 @@
 .omss-slider .omss-slider-full-screen-ctrls {
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 25px;
     width: 25px;
     z-index: 1100;
     cursor: pointer;
