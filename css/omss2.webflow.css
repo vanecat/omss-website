@@ -84,7 +84,7 @@ h2 {
   top: 0%;
   right: 0%;
   bottom: auto;
-  z-index: 90;
+  z-index: 9000;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
