@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^contact-form$ /contact/contact.php [L]

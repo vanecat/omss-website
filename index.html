@@ -250,23 +250,17 @@
         <h1>Contact</h1>
         <div class="normal">Our team is available for assistance 24/7.</div>
         <div class="form-block w-form">
-          <div style="display: none;" class="normal contact-success">Thank you for contacting us. We will be in touch soon!</div>
-          <div style="display: none;" class="normal contact-errors">Contact form submission errors</div>
-          <form id="email-form" name="email-form" data-name="Email Form" class="normal" data-form="form" >
+          <form id="email-form" name="email-form" data-name="Email Form" class="normal" data-contactform="form" action="/contact-form">
+            <div style="display: none;" class="normal contact-success" data-contactform="success">Thank you for contacting us. We will be in touch soon!</div>
+            <div style="display: none;" class="normal contact-errors" data-contactform="errors">Contact form submission errors</div>
             <div class="form-field-inline-group">
-              <div class="form-field short"><label for="name">Name</label><input type="text" class="w-input" data-form="field" maxlength="256" name="name" data-name="name" placeholder="" id="name" required=""></div>
-              <div class="form-field short"><label for="email">Email Address</label><input type="email" class="w-input" data-form="field" maxlength="256" name="email" data-name="email" placeholder="" id="email" required=""></div>
-              <div class="form-field short last"><label for="phone">Phone Number</label><input type="tel" class="w-input" data-form="field" maxlength="256" name="phone" data-name="phone" placeholder="" id="phone" required=""></div>
+              <div class="form-field short"><label for="name">Name</label><input type="text" class="w-input" data-contactform="field" maxlength="256" name="name" data-name="name" placeholder="" id="name" required=""></div>
+              <div class="form-field short"><label for="email">Email Address</label><input type="email" class="w-input" data-contactform="field" maxlength="256" name="email" data-name="email" placeholder="" id="email" required=""></div>
+              <div class="form-field short last"><label for="phone">Phone Number</label><input type="tel" class="w-input" data-contactform="field" maxlength="256" name="phone" data-name="phone" placeholder="" id="phone" required=""></div>
             </div>
-            <div class="form-field"><label for="subject">Subject</label><input type="text" class="w-input" data-form="field" maxlength="256" name="subject" data-name="subject" placeholder="" id="subject" required=""></div>
-            <div class="form-field"><label for="email">Message</label></div><textarea placeholder="Write your message to us here" maxlength="5000" id="message" name="message" required="" data-name="message" data-form="field" class="textarea w-input"></textarea><input type="submit" value="Send" data-wait="Please wait..." data-form="submit" class="w-button">
+            <div class="form-field"><label for="subject">Subject</label><input type="text" class="w-input" data-contactform="field" maxlength="256" name="subject" data-name="subject" placeholder="" id="subject" required=""></div>
+            <div class="form-field"><label for="email">Message</label></div><textarea placeholder="Write your message to us here" maxlength="5000" id="message" name="message" required="" data-name="message" data-contactform="field" class="textarea w-input"></textarea><input type="submit" value="Send" data-wait="Please wait..." data-contactform="submit" class="w-button">
           </form>
-          <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-          </div>
-          <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-          </div>
         </div>
       </div>
     </div>
@@ -279,6 +273,7 @@
     OMSSFullScreen();
     OMSSSlider();
     OMSSPopover('.overlay', '[data-popover=open]', '[data-popover=close]', 'hidden', 'shown', 500, 'no-scroll');
+    OMSSContactForm('contactform');
   </script>
 </body>
 </html>

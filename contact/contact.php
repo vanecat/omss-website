@@ -1,5 +1,5 @@
 <?php
-
+header('X-Powered-By: OMSS', true);
 class OMSSContactForm {
     static public function isWebRequest() {
         return !empty($_SERVER['GATEWAY_INTERFACE']) &&
