@@ -101,7 +101,7 @@ Phone: $phone
 ---
 $message
 EOMSG;
-            mail( 'vanecat@gmail.com', 'OMSS Contact Form: ' . $subject, $message );
+            mail( 'office@oaklandmss.com', 'OMSS Contact Form: ' . $subject, $message );
         }
 
         header( 'Content-type: application/json' );
