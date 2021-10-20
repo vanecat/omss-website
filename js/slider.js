@@ -113,13 +113,17 @@ function OMSSSlider(attrPrefix='slider', customClasses={}) {
                 }
             });
         }
-        window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+        if (!window.onYouTubeIframeAPIReady) {
+            window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady() {
+                youtubeSlides.forEach(slide => initYoutubePlayer(slide));
+            }
+            if (youtubeSlides.length) {
+                const youtubeApi = document.createElement('script');
+                youtubeApi.src = "https://www.youtube.com/iframe_api";
+                document.querySelector('head').appendChild(youtubeApi);
+            }
+        } else {
             youtubeSlides.forEach(slide => initYoutubePlayer(slide));
-        }
-        if (youtubeSlides.length) {
-            const youtubeApi = document.createElement('script');
-            youtubeApi.src = "https://www.youtube.com/iframe_api";
-            document.querySelector('head').appendChild(youtubeApi);
         }
 
         function fitYoutubeIframes() {
