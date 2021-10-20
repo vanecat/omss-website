@@ -83,18 +83,24 @@ h2 {
   text-align: center;
 }
 
-.page-nav-header {
+.page-nav-header-wrap {
+  width: 100vw;
+  background-color: black;
   position: fixed;
   left: 0%;
   top: 0%;
   right: 0%;
   bottom: auto;
   z-index: 9000;
+}
+.page-nav-header {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
   height: 50px;
   padding-right: 40px;
   padding-left: 10px;
@@ -178,6 +184,8 @@ h2 {
   display: flex;
   overflow: hidden;
   width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
   min-height: 100vh;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -293,6 +301,8 @@ h2 {
 .section-wrap {
   display: block;
   width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
   min-height: 60vh;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
@@ -550,6 +560,8 @@ h2 {
   display: -ms-flexbox;
   display: flex;
   width: 100vw;
+  max-width: 1400px;
+  margin: 0 auto;
   min-height: 50vh;
   padding-top: 4.1rem;
   padding-bottom: 4.1rem;
@@ -1046,7 +1058,7 @@ h2 {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 100vw;
+  width: auto;
   min-height: 50vh;
   padding-top: 1rem;
   padding-bottom: 1rem;
