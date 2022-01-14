@@ -80,7 +80,7 @@ CURL;
                 bad-request	The request is invalid or malformed.
                 timeout-or-duplicate	The response is no longer valid: either is too old or has been used previously.
         */
-        error_log($curlCmd);
+        
         $response = json_decode(shell_exec($curlCmd));
         if (empty($response)) {
             $errors[] = 'Recaptcha is having issues';
