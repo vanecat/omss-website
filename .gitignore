@@ -9,4 +9,5 @@
 fonts/
 
 config.json
+.htaccess
 .idea/
