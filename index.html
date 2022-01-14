@@ -252,7 +252,7 @@
   <div id="contact" class="footer-section">
     <div class="box">
       <h3 class="box-top-wrap">Contact</h3>
-      <div class="footer-box-item"><a href="#" data-popover="open" data-popover-id="contact" class="footer-box-item link">Online Contact Form</a></div>
+      <div class="footer-box-item"><a href="#" data-popover="open" data-popover-id="contact" data-contactform="init" class="footer-box-item link">Online Contact Form</a></div>
       <div class="footer-box-item">Phone: 510 868 1005</div>
       <div class="footer-box-item">Fax: 510 868 1007</div>
       <div class="footer-box-item">Email: info@oaklandmss.com</div>
@@ -313,6 +313,7 @@
               <div class="form-field short last"><label for="phone">Phone Number</label><input type="tel" class="w-input" data-contactform="field" maxlength="256" name="phone" data-name="phone" placeholder="" id="phone" required=""></div>
             </div>
             <div class="form-field"><label for="subject">Subject</label><input type="text" class="w-input" data-contactform="field" maxlength="256" name="subject" data-name="subject" placeholder="" id="subject" required=""></div>
+            <div class="form-field"><div data-contactform="recaptcha"></div></div>
             <div class="form-field"><label for="email">Message</label></div><textarea placeholder="Write your message to us here" maxlength="5000" id="message" name="message" required="" data-name="message" data-contactform="field" class="textarea w-input"></textarea><input type="submit" value="Send" data-wait="Please wait..." data-contactform="submit" class="w-button">
           </form>
         </div>

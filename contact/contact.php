@@ -48,8 +48,52 @@ class OMSSContactForm {
         return array(true, false);
     }
 
-    public static function Submit() {
+    public static function Submit($config) {
         $errors = [];
+
+
+        $grecaptcha = trim( strip_tags( $_POST['recaptcha'] ) );
+        $grecaptcha = urlencode(str_replace(["'", '$', '\\'], '', $grecaptcha));
+        $curlCmdTemplate = <<<CURL
+        curl 
+            --request POST  
+            --data 'secret=%s&response=%s&remoteip=%s' 
+            https://www.google.com/recaptcha/api/siteverify 
+            2>/dev/null
+CURL;
+        $curlCmd = sprintf($curlCmdTemplate, $config->recaptcha->server_key, $grecaptcha, $_SERVER['REMOTE_ADDR']);
+        $curlCmd = str_replace("\n", " ", $curlCmd); // remove new lines to be sure
+        /*
+         * Sample Verification Response
+            {
+              "success": true|false,
+              "challenge_ts": timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+              "hostname": string,         // the hostname of the site where the reCAPTCHA was solved
+              "error-codes": [...]        // optional
+            }
+
+            Sample error codes:
+                missing-input-secret	The secret parameter is missing.
+                invalid-input-secret	The secret parameter is invalid or malformed.
+                missing-input-response	The response parameter is missing.
+                invalid-input-response	The response parameter is invalid or malformed.
+                bad-request	The request is invalid or malformed.
+                timeout-or-duplicate	The response is no longer valid: either is too old or has been used previously.
+        */
+        error_log($curlCmd);
+        $response = json_decode(shell_exec($curlCmd));
+        if (empty($response)) {
+            $errors[] = 'Recaptcha is having issues';
+        } else if (!empty($response->{'error-codes'})) {
+            if (in_array('timeout-or-duplicate', $response->{'error-codes'})) {
+                $errors[] = 'Anti-spam/robot validation expired';
+            }
+            if (in_array('missing-input-response', $response->{'error-codes'}) ||
+                in_array('invalid-input-response', $response->{'error-codes'})) {
+                $errors[] = 'Anti-spam/robot validation is not incomplete/missing';
+            }
+        }
+
 
         $name = trim( strip_tags( $_POST['name'] ) );
         $name = mb_substr( $name, 0, 100 ); // char limit
@@ -118,5 +162,6 @@ EOMSG;
     }
 }
 if (OMSSContactForm::isWebRequest() && OMSSContactForm::isSelf()) {
-    OMSSContactForm::Submit();
+    $config = json_decode(file_get_contents('config.json'));
+    OMSSContactForm::Submit($config);
 }
