@@ -9,6 +9,25 @@ class OMSSContactForm {
     static public function isSelf() {
         return !self::isIncluded();
     }
+
+    static private function reducePath($path) {
+        $pathArr = array_reverse(explode('/', $path));
+        $realPathArr = [];
+        $goUpALevel = false;
+        foreach($pathArr as $pathPart) {
+            if ($goUpALevel) {
+                $goUpALevel = false;
+                continue;
+            }
+            if ($pathPart === '..') { // /great/grand/parent/../blah === /great/grand/blah
+                $goUpALevel = true;
+                continue;
+            }
+            $realPathArr[] = $pathPart;
+        }
+        return implode('/', array_reverse($realPathArr));
+    }
+
     static public function isIncluded() {
         if (self::isWebRequest()) {
             if ($_SERVER['SCRIPT_FILENAME'] === __FILE__) {
@@ -18,7 +37,10 @@ class OMSSContactForm {
             }
         } else {
             // CLI request
-            if ($_SERVER['PWD'].'/'.$_SERVER['SCRIPT_FILENAME'] === __FILE__) {
+            $isScriptAbsPath = strpos($_SERVER['SCRIPT_FILENAME'], '/') === 0;
+            // get real path (reduce the script path); pre-pend the "pwd" aka current working dir if a relative path
+            $realPath = self::reducePath(($isScriptAbsPath ? '' : $_SERVER['PWD'].'/') . $_SERVER['SCRIPT_FILENAME']);
+            if ($realPath === __FILE__) {
                 return false; // is self
             } else {
                 return true; // is included
