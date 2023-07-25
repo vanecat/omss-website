@@ -32,7 +32,8 @@ function OMSSContactForm(attrPrefix='form') {
         }
     }
 
-    const form = $('form');
+    const formContainer = $('form');
+    const form = formContainer.tagName === 'FORM' ? formContainer : formContainer.querySelector('form');
     const errors = $('errors', false, form);
     const success = $('success', false, form);
     const fields = $('field', true, form);
